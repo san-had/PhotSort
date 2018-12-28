@@ -8,7 +8,7 @@ namespace PhotSortComponent.Domain
 {
     public class ImageDataSorter : IImageDataSorter
     {
-        private const int THRESHOLD = 30;
+        private const int THRESHOLD = 45;
 
         private const string CONTAINER_NAME = "var";
 
