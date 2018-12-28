@@ -1,0 +1,31 @@
+﻿TODO List
+---------
+
+
+	- Add interface to ExifDataDto class to make it mockable
+	- Add PhotSortComponent test project
+
+	- Completing Integration test for ImageDataCollector
+	- Implement ImageDataSorter
+	- Write unit test for ImageDataSorter
+	- Implement ImageDataSortExecutor
+
+	- Write unit tests for ImageDataSortExecutor
+	  - SetFullPathForImage
+	  - SetNewFullPathForImages
+	  - CreateSortedResultList
+
+
+	- Implement ISO Level differency
+	- Implement dark sorting
+	- mark dark images with dark + isolevel  example dark200
+	- mark images with isolevel + number of images, example: var1_800x30
+	- if there is a sequence defined in a textarea apply the varible names for the container names
+
+	- refactor for ImageDataExecutor class
+	  create a new class ImageDataSortPreparator class
+	- write unit and integration tests for image data preparator
+	- teszt eset az iso level különbségre
+	- UI fontok beállítása, UI elemek elrendezése
+- asyncron végrehajtás
+- gitthub-ba feltenni
