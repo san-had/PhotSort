@@ -58,5 +58,11 @@ namespace ExifLibInAction
             }
             txtSortResult.Text = sb.ToString();
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtSeq.Text = string.Empty;
+            txtSortResult.Text = string.Empty;
+        }
     }
 }

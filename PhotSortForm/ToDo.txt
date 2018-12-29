@@ -27,5 +27,12 @@
 	- write unit and integration tests for image data preparator
 	- teszt eset az iso level különbségre
 	- UI fontok beállítása, UI elemek elrendezése
-- asyncron végrehajtás
-- gitthub-ba feltenni
+
+	- gitthub-ba feltenni
+- reset gomb
+- automatikusan lenyissa a folder listát
+- asyncron végrehajtás, végrehajtás alatt jelenítse meg a "Sorting..." üzenetet
+
+
+
+
