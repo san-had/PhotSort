@@ -19,7 +19,7 @@ namespace ExifToolTest
             string expectedFileName = "IMG_1759.CR2";
             string actualFileName = exifDataDto.FileName;
 
-            string expectedDirectory = @"D:\Backup\PhotShort\ExifToolTest\Resources";
+            string expectedDirectory = Path.GetDirectoryName(fullPath);
             string actualDirectory = exifDataDto.Directory;
 
             string expectedFullPath = fullPath;

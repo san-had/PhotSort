@@ -16,11 +16,11 @@ namespace PhotSortComponentTest.Mocked
 
             listOfFakeImages.AddRange(firstImageList);
 
-            var secondImageList = GenerateImageList("IMG18{0:00}", new DateTime(2018, 10, 31, 18, 2, 6), 200, 20);
+            var secondImageList = GenerateImageList("IMG18{0:00}", new DateTime(2018, 10, 31, 18, 2, 21), 200, 20);
 
             listOfFakeImages.AddRange(secondImageList);
 
-            var thirdImageList = GenerateImageList("IMG19{0:00}", new DateTime(2018, 10, 31, 18, 4, 12), 200, 10);
+            var thirdImageList = GenerateImageList("IMG19{0:00}", new DateTime(2018, 10, 31, 18, 4, 42), 200, 10);
 
             listOfFakeImages.AddRange(thirdImageList);
 
