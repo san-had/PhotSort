@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PhotSortComponent.Extensibility;
 
 namespace PhotSortComponent
@@ -22,7 +23,7 @@ namespace PhotSortComponent
             this.imageDataSortExecutor = imageDataSortExecutor;
         }
 
-        public IList<string> SortProcessing(string folderName, string[] sequences)
+        public async Task<IList<string>> SortProcessing(string folderName, string[] sequences)
         {
             var images = imageDataCollector.ReadExifDataOfFiles(folderName);
 
@@ -30,9 +31,9 @@ namespace PhotSortComponent
 
             imageDataPreparator.PrepareImages(sortedImages, sequences);
 
-            var sortResults = imageDataSortExecutor.SortImages(sortedImages);
+            Task<IList<string>> sortResults = Task.Run(() => imageDataSortExecutor.SortImages(sortedImages));
 
-            return sortResults;
+            return await sortResults;
         }
     }
 }

@@ -29,8 +29,8 @@
 	- UI fontok beállítása, UI elemek elrendezése
 
 	- gitthub-ba feltenni
-- reset gomb
-- automatikusan lenyissa a folder listát
+	- reset gomb
+	- automatikusan lenyissa a folder listát
 - asyncron végrehajtás, végrehajtás alatt jelenítse meg a "Sorting..." üzenetet
 
 

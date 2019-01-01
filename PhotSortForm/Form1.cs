@@ -37,13 +37,15 @@ namespace ExifLibInAction
             }
         }
 
-        private void btnSortImages_Click(object sender, EventArgs e)
+        private async void btnSortImages_Click(object sender, EventArgs e)
         {
             var folderPath = txtImageDir.Text;
 
             string[] sequenceLines = txtSeq.Lines;
 
-            var sortResult = mainSorter.SortProcessing(folderPath, sequenceLines);
+            txtSortResult.Text = "Sorting pictures please wait patiently!";
+
+            var sortResult = await mainSorter.SortProcessing(folderPath, sequenceLines);
 
             DisplaySortResult(sortResult);
         }

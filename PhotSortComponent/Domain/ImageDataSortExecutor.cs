@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using PhotSortComponent.Dto;
 using PhotSortComponent.Extensibility;
 
@@ -8,9 +9,9 @@ namespace PhotSortComponent.Domain
 {
     public class ImageDataSortExecutor : IImageDataSortExecutor
     {
-        public IList<string> SortImages(IList<ContainerDto> imageContainers)
+        public async Task<IList<string>> SortImages(IList<ContainerDto> imageContainers)
         {
-            MoveImages(imageContainers);
+            await MoveImages(imageContainers);
 
             var sortResultList = CreateSortedResultList(imageContainers);
 
@@ -29,14 +30,17 @@ namespace PhotSortComponent.Domain
             return sortResultList;
         }
 
-        private void MoveImages(IList<ContainerDto> imageContainers)
+        private async Task MoveImages(IList<ContainerDto> imageContainers)
         {
             foreach (var container in imageContainers)
             {
                 foreach (var image in container.ImageList)
                 {
-                    Directory.CreateDirectory(image.DirectoryNew);
-                    File.Move(image.FullPath, image.FullPathNew);
+                    await Task.Run(() =>
+                    {
+                        Directory.CreateDirectory(image.DirectoryNew);
+                        File.Move(image.FullPath, image.FullPathNew);
+                    });
                 }
             }
         }
