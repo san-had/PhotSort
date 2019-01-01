@@ -43,7 +43,7 @@ namespace ExifLibInAction
 
             string[] sequenceLines = txtSeq.Lines;
 
-            txtSortResult.Text = "Sorting pictures please wait patiently!";
+            txtSortResult.Text = "Sorting pictures ...";
 
             var sortResult = await mainSorter.SortProcessing(folderPath, sequenceLines);
 
