@@ -21,11 +21,11 @@ namespace PhotSortComponentTest.Domain
         }
 
         [TestMethod]
-        public void CheckSortedMockedImagesForIsoLevelDifferency()
+        public async void CheckSortedMockedImagesForIsoLevelDifferency()
         {
             var mockedImageDataCollector = kernel.Get<IImageDataCollector>();
 
-            var mockedImageDataList = mockedImageDataCollector.ReadExifDataOfFiles(string.Empty);
+            var mockedImageDataList = await mockedImageDataCollector.ReadExifDataOfFiles(string.Empty);
             var imageSorter = kernel.Get<IImageDataSorter>();
             var sortedImageList = imageSorter.GetSortedImages(mockedImageDataList);
 

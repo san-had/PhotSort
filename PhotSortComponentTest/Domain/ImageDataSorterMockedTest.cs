@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using PhotSortComponent.Domain;
@@ -21,11 +22,11 @@ namespace PhotSortComponentTest
         }
 
         [TestMethod]
-        public void GetSortedWithMockedImagesTest()
+        public async Task GetSortedWithMockedImagesTest()
         {
             var mockedImageDataCollector = kernel.Get<IImageDataCollector>();
 
-            var mockedImageDataList = mockedImageDataCollector.ReadExifDataOfFiles(string.Empty);
+            var mockedImageDataList = await mockedImageDataCollector.ReadExifDataOfFiles(string.Empty);
             var imageSorter = kernel.Get<IImageDataSorter>();
             var sortedImageList = imageSorter.GetSortedImages(mockedImageDataList);
 

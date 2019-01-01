@@ -24,14 +24,14 @@ namespace PhotSortComponentTest.Domain
         }
 
         [TestMethod]
-        public void ReadExifDataOfFilesTest()
+        public async void ReadExifDataOfFilesTest()
         {
             string folderName = @"..\..\Resources\2018_10_31\";
             string fullPath = Path.GetFullPath(folderName);
 
             var exifReader = kernel.Get<IExifReader>();
             var imageDataCollector = kernel.Get<IImageDataCollector>();
-            IList<IExifDataDto> imageDataList = imageDataCollector.ReadExifDataOfFiles(fullPath);
+            IList<IExifDataDto> imageDataList = await imageDataCollector.ReadExifDataOfFiles(fullPath);
 
             var expectedNumberOfImages = 9;
             var actualNumberOfImages = imageDataList.Count();

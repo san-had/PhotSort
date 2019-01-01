@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using ExifReader.Extensibility;
 using ExifTool.Dto;
 using ExifTool.Extensibility;
@@ -11,7 +12,7 @@ namespace ExifTool
 {
     public class ExifReader : IExifReader
     {
-        public IExifDataDto ReadExifData(string fullPath)
+        public async Task<IExifDataDto> ReadExifData(string fullPath)
         {
             var directory = ImageMetadataReader.ReadMetadata(fullPath).OfType<ExifSubIfdDirectory>().FirstOrDefault();
 
@@ -26,8 +27,8 @@ namespace ExifTool
             exifData.Directory = Path.GetDirectoryName(fullPath);
             exifData.FullPath = fullPath;
 
-            exifData.TakenDateTime = GetTakendateTime(directory) ?? default(DateTime);
-            exifData.IsoLevel = GetIsoLevel(directory) ?? default(int);
+            exifData.TakenDateTime = await Task.Run(() => GetTakendateTime(directory)) ?? default(DateTime);
+            exifData.IsoLevel = await Task.Run(() => GetIsoLevel(directory)) ?? default(int);
 
             return exifData;
         }

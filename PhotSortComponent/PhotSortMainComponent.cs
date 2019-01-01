@@ -25,15 +25,15 @@ namespace PhotSortComponent
 
         public async Task<IList<string>> SortProcessing(string folderName, string[] sequences)
         {
-            var images = imageDataCollector.ReadExifDataOfFiles(folderName);
+            var images = await imageDataCollector.ReadExifDataOfFiles(folderName);
 
             var sortedImages = imageDataSorter.GetSortedImages(images);
 
             imageDataPreparator.PrepareImages(sortedImages, sequences);
 
-            Task<IList<string>> sortResults = Task.Run(() => imageDataSortExecutor.SortImages(sortedImages));
+            var sortResults = await Task.Run(() => imageDataSortExecutor.SortImages(sortedImages));
 
-            return await sortResults;
+            return sortResults;
         }
     }
 }

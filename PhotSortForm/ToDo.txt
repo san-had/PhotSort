@@ -31,7 +31,7 @@
 	- gitthub-ba feltenni
 	- reset gomb
 	- automatikusan lenyissa a folder listát
-- asyncron végrehajtás, végrehajtás alatt jelenítse meg a "Sorting..." üzenetet
+	- asyncron végrehajtás, végrehajtás alatt jelenítse meg a "Sorting..." üzenetet
 
 
 

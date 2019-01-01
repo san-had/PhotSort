@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExifToolTest
@@ -8,13 +9,13 @@ namespace ExifToolTest
     public class ExifReaderTest
     {
         [TestMethod]
-        public void ReadExifData()
+        public async Task ReadExifData()
         {
             string fileName = @"..\..\Resources\IMG_1759.CR2";
             string fullPath = Path.GetFullPath(fileName);
 
             var exifReader = new ExifTool.ExifReader();
-            var exifDataDto = exifReader.ReadExifData(fullPath);
+            var exifDataDto = await exifReader.ReadExifData(fullPath);
 
             string expectedFileName = "IMG_1759.CR2";
             string actualFileName = exifDataDto.FileName;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using ExifReader.Extensibility;
 using ExifTool.Extensibility;
 using PhotSortComponent.Extensibility;
@@ -15,21 +16,21 @@ namespace PhotSortComponent.Domain
             this.exifDataReader = exifDataReader;
         }
 
-        public IList<IExifDataDto> ReadExifDataOfFiles(string folderName)
+        public async Task<IList<IExifDataDto>> ReadExifDataOfFiles(string folderName)
         {
             var filesData = new List<IExifDataDto>();
 
             foreach (var filePath in Directory.EnumerateFiles(folderName))
             {
-                var fileData = ReadExifDataOfFile(filePath);
+                var fileData = await ReadExifDataOfFile(filePath);
                 filesData.Add(fileData);
             }
             return filesData;
         }
 
-        private IExifDataDto ReadExifDataOfFile(string filePath)
+        private async Task<IExifDataDto> ReadExifDataOfFile(string filePath)
         {
-            var exifDataDto = exifDataReader.ReadExifData(filePath);
+            var exifDataDto = await exifDataReader.ReadExifData(filePath);
             return exifDataDto;
         }
     }

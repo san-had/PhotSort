@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using ExifReader.Extensibility;
 using ExifTool.Extensibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -25,13 +26,13 @@ namespace PhotSortComponentTest
         }
 
         [TestMethod]
-        public void GetSortedRealImagesTest()
+        public async Task GetSortedRealImagesTest()
         {
             string folderName = @"..\..\Resources\2018_10_31\";
             string fullPath = Path.GetFullPath(folderName);
 
             var imageDataCollector = kernel.Get<IImageDataCollector>();
-            IList<IExifDataDto> imageDataList = imageDataCollector.ReadExifDataOfFiles(fullPath);
+            IList<IExifDataDto> imageDataList = await imageDataCollector.ReadExifDataOfFiles(fullPath);
             var imageSorter = kernel.Get<IImageDataSorter>();
             var sortedImageList = imageSorter.GetSortedImages(imageDataList);
 

@@ -1,9 +1,10 @@
-﻿using ExifReader.Extensibility;
+﻿using System.Threading.Tasks;
+using ExifReader.Extensibility;
 
 namespace ExifTool.Extensibility
 {
     public interface IExifReader
     {
-        IExifDataDto ReadExifData(string fileName);
+        Task<IExifDataDto> ReadExifData(string fileName);
     }
 }
