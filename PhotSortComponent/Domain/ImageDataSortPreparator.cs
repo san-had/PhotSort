@@ -18,6 +18,8 @@ namespace PhotSortComponent.Domain
         public void SetContainerNames(IList<ContainerDto> imageContainers, string[] containerNames)
         {
             int containerNameIndex = 0;
+            int containerIndex = 1;
+            string defaultContainerName = "var{0}";
             for (int i = 0; i < imageContainers.Count; i++)
             {
                 if (imageContainers[i].ImageList.Count == 10)
@@ -32,6 +34,11 @@ namespace PhotSortComponent.Domain
                     {
                         imageContainers[i].ContainerName = newContainerName;
                         containerNameIndex++;
+                    }
+                    else
+                    {
+                        imageContainers[i].ContainerName = string.Format(defaultContainerName, containerIndex);
+                        containerIndex++;
                     }
                 }
             }

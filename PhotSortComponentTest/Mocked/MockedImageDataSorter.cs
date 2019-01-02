@@ -9,6 +9,8 @@ namespace PhotSortComponentTest.Mocked
 {
     public class MockedImageDataSorter : IImageDataSorter
     {
+        private int containerIndex = 1;
+
         public IList<ContainerDto> GetSortedImages(IList<IExifDataDto> images)
         {
             var containers = GenerateContainers(3, 20).ToList();
@@ -16,6 +18,8 @@ namespace PhotSortComponentTest.Mocked
             var darkContainer = GenerateContainers(1, 10);
 
             containers.AddRange(darkContainer);
+
+            containers.AddRange(GenerateContainers(2, 20));
 
             return containers;
         }
@@ -28,10 +32,10 @@ namespace PhotSortComponentTest.Mocked
 
             for (int i = 0; i < numberOfContainers; i++)
             {
-                var indexOfContainer = i + 1;
-                var container = new ContainerDto { ContainerName = string.Format(containerDefaultName, indexOfContainer.ToString()) };
+                var container = new ContainerDto { ContainerName = string.Format(containerDefaultName, containerIndex.ToString()) };
                 container.ImageList = GenerateImageList(numberOfImages);
                 containerList.Add(container);
+                containerIndex++;
             }
 
             return containerList;
